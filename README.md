@@ -28,7 +28,3 @@ API base: `http://localhost:8080`
 | DELETE | `/api/products/{id}` | Delete product |
 
 H2 console: `http://localhost:8080/h2-console` (JDBC URL `jdbc:h2:mem:productsdb`)
-
-## Quote
-
-> "First, solve the problem. Then, write the code." — John Johnson
