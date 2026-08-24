@@ -33,9 +33,14 @@ system-installed Maven (3.9+).
 
 ## Test Commands
 
-There is currently no `src/test` directory in this repository — no tests
-exist yet. When adding tests, use the standard Maven Surefire conventions
-(JUnit 5 is available transitively via `spring-boot-starter-test`):
+Tests live under `src/test/java/com/example/javacru/` and use the standard
+Maven Surefire conventions (JUnit 5 is available transitively via
+`spring-boot-starter-test`):
+
+- `service/ProductServiceTest.java` — unit tests for `ProductService`,
+  using Mockito to mock `ProductRepository`.
+- `controller/ProductControllerTest.java` — `@WebMvcTest` slice tests for
+  `ProductController`, using `MockMvc` and a mocked `ProductService`.
 
 - **Run the full test suite**:
   ```bash
@@ -84,9 +89,12 @@ src/main/java/com/example/javacru/
     GlobalExceptionHandler.java     @RestControllerAdvice mapping exceptions to JSON error bodies
 src/main/resources/
   application.yml                Server port, H2 datasource, JPA/Hibernate, logging config
+src/test/java/com/example/javacru/
+  service/
+    ProductServiceTest.java      Mockito-based unit tests for ProductService
+  controller/
+    ProductControllerTest.java   @WebMvcTest slice tests for ProductController
 ```
-
-There is no `src/test` directory yet.
 
 ## Architecture Notes
 
@@ -112,8 +120,8 @@ There is no `src/test` directory yet.
 - **Key dependencies**: `spring-boot-starter-web` (REST),
   `spring-boot-starter-data-jpa` (persistence), `spring-boot-starter-validation`
   (bean validation), `h2` (runtime, in-memory DB), `spring-boot-starter-test`
-  (test scope, JUnit 5 + Mockito + Spring Test, not yet exercised by any
-  tests).
+  (test scope, JUnit 5 + Mockito + Spring Test, exercised by the tests under
+  `src/test`).
 
 ## Code Style
 
