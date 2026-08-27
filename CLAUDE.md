@@ -41,6 +41,10 @@ Maven Surefire conventions (JUnit 5 is available transitively via
   using Mockito to mock `ProductRepository`.
 - `controller/ProductControllerTest.java` — `@WebMvcTest` slice tests for
   `ProductController`, using `MockMvc` and a mocked `ProductService`.
+- `exception/GlobalExceptionHandlerTest.java` — unit tests for
+  `GlobalExceptionHandler`, verifying the status/body produced for
+  `ResourceNotFoundException`, `MethodArgumentNotValidException`, and
+  generic `Exception`.
 
 - **Run the full test suite**:
   ```bash
@@ -94,6 +98,8 @@ src/test/java/com/example/javacru/
     ProductServiceTest.java      Mockito-based unit tests for ProductService
   controller/
     ProductControllerTest.java   @WebMvcTest slice tests for ProductController
+  exception/
+    GlobalExceptionHandlerTest.java  Unit tests for GlobalExceptionHandler
 ```
 
 ## Architecture Notes
